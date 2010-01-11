@@ -1,6 +1,6 @@
-from feedback.models import Feedback
-
 from django.template import Library, Node
+
+from feedback.models import Feedback
 
 register = Library()
 

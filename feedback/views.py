@@ -1,6 +1,7 @@
-from forms import FeedbackForm
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
+
+from feedback.forms import FeedbackForm
 
 def leave_feedback(request):
     if request.method == 'POST':

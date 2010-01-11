@@ -15,6 +15,8 @@ in your settings file. For example::
 		('bug', 'Bug'),
 		('feature_request', 'Feature Request)
 	)
+	
+Also, be sure to include ``feedback.urls`` somewhere in your urls.py file.
 
 Add ``feedback.context_processors.feedback_form`` to ``TEMPLATE_CONTEXT_PROCESSORS``, and
 ``feedback_form`` will be in the context for all authenticated users.

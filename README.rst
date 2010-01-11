@@ -11,12 +11,12 @@ Installation
 Put ``feedback`` in your ``INSTALLED_APPS``, and set ``FEEDBACK_CHOICES`` to a 2-tuple of feedback types
 in your settings file. For example:
 
-{{
+{
 FEEDBACK_CHOICES = (
 	('bug', 'Bug'),
 	('feature_request', 'Feature Request)
 )
-}}
+}
 
 Add ``feedback.context_processors.feedback_form`` to ``TEMPLATE_CONTEXT_PROCESSORS``, and
 ``feedback_form`` will be in the context for all authenticated users.

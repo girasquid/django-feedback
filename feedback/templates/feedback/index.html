@@ -1,0 +1,23 @@
+{% extends "admin/index.html" %}
+{% load i18n feedback_tags %}
+{% block extrahead %}
+    <style type='text/css'>
+    #feedback {float:right;margin-right:-38em;width:18em;position:relative;}
+    </style>
+    {{ block.super }}
+{% endblock %}
+{% block sidebar %}
+    {{ block.super }}
+    <div id="feedback">
+        <div class="module" id="feedback-module">
+            <h2>{% trans 'Feedback' %}</h2>
+            <ul class='actionlist'>
+                {% get_feedback %}
+                {% for feedback in feedback %}
+                    <li><a href="{{ feedback.get_absolute_url }}">{{ feedback.get_type_display }} from {{ feedback.user.username|title }}</a> &mdash; {{ feedback.time|timesince }} ago</li>
+                {% endfor %}
+            </ul>
+            <p><a href='{% url admin:feedback_feedback_changelist %}'>View all feedback</a></p>
+        </div>
+    </div>
+{% endblock %}

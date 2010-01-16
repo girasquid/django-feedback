@@ -7,7 +7,7 @@ class Feedback(models.Model):
     
     class Meta:
         
-        ordering = ['time']
+        ordering = ['-time']
     
     user    = models.ForeignKey(User)
     type    = models.CharField(choices=settings.FEEDBACK_CHOICES, max_length=100)

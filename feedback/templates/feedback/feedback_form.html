@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Leave some feedback{% endblock %}
+{% block main_content %}
+    <form action='.' method='post'>
+        <table>
+            {{ form.as_table }}
+            <tr>
+                <td colspan='2'>
+                    <input type="submit" value="Leave feedback" />
+                </td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}

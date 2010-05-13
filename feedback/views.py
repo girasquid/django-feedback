@@ -8,7 +8,9 @@ def leave_feedback(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
-            form.save()
+            feedback = form.save(commit=False)
+            feedback.user = request.user
+            feedback.save()
             request.user.message_set.create(message="Your feedback has been saved successfully.")
             return HttpResponseRedirect(request.POST.get('next', request.META.get('HTTP_REFERER', '/')))
     else:

@@ -10,4 +10,3 @@ class FeedbackForm(forms.ModelForm):
         
     def __init__(self, *args, **kwargs):
         super(FeedbackForm, self).__init__(*args, **kwargs)
-        self.fields['user'].widget = forms.HiddenInput()

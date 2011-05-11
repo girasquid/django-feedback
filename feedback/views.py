@@ -14,5 +14,5 @@ def leave_feedback(request, template_name='feedback/feedback_form.html'):
         feedback.save()
         request.user.message_set.create(message=_("Your feedback has been saved successfully."))
         return HttpResponseRedirect(request.POST.get('next', request.META.get('HTTP_REFERER', '/')))
-    return render_to_response(template_name, {'form': form}, context_instance=RequestContext(request))
+    return render_to_response(template_name, {'feedback_form': form}, context_instance=RequestContext(request))
 

@@ -1,3 +1,5 @@
+from django.utils.translation import ugettext_lazy as _
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
@@ -9,10 +11,10 @@ class Feedback(models.Model):
         
         ordering = ['-time']
     
-    user    = models.ForeignKey(User)
-    type    = models.CharField(choices=settings.FEEDBACK_CHOICES, max_length=100)
-    message = models.TextField()
-    time    = models.DateTimeField(auto_now_add=True)
+    user    = models.ForeignKey(User, verbose_name=_('User'))
+    type    = models.CharField(choices=settings.FEEDBACK_CHOICES, max_length=100, verbose_name=_('Type'))
+    message = models.TextField(verbose_name=_('Message'))
+    time    = models.DateTimeField(auto_now_add=True, verbose_name=_('Time'))
     
     def __unicode__(self):
         return self.message

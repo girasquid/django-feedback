@@ -21,6 +21,8 @@ Also, be sure to include ``feedback.urls`` somewhere in your urls.py file.
 Add ``feedback.context_processors.feedback_form`` to ``TEMPLATE_CONTEXT_PROCESSORS``, and
 ``feedback_form`` will be in the context for all authenticated users.
 
+To support anonymous feedback, set ``ALLOW_ANONYMOUS_FEEDBACK`` to true in your settings file.
+
 Screenshots
 ===========
 .. image:: http://cloud.github.com/downloads/girasquid/django-feedback/django-feedback-1.PNG

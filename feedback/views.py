@@ -1,18 +1,21 @@
-from django.utils.translation import ugettext as _
-
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from feedback.forms import FeedbackForm
+from feedback.forms import FeedbackForm, AnonymousFeedbackForm
 
 def leave_feedback(request, template_name='feedback/feedback_form.html'):
-    form = FeedbackForm(request.POST or None)
+    if request.user.is_authenticated():
+        form = FeedbackForm(request.POST or None)
+    else:
+        form = AnonymousFeedbackForm(request.POST or None)
     if form.is_valid():
         feedback = form.save(commit=False)
-        feedback.user = request.user
+        if request.user.is_anonymous():
+            feedback.user = None
+        else:
+            feedback.user = request.user
         feedback.save()
-        request.user.message_set.create(message=_("Your feedback has been saved successfully."))
         return HttpResponseRedirect(request.POST.get('next', request.META.get('HTTP_REFERER', '/')))
     return render_to_response(template_name, {'feedback_form': form}, context_instance=RequestContext(request))
 

@@ -1,6 +1,6 @@
 from django.conf import settings
+from feedback.forms import AnonymousFeedbackForm, FeedbackForm
 
-from feedback.forms import FeedbackForm, AnonymousFeedbackForm
 
 def feedback_form(request):
     feedback_form = None
@@ -8,6 +8,4 @@ def feedback_form(request):
         feedback_form = FeedbackForm()
     elif getattr(settings, 'ALLOW_ANONYMOUS_FEEDBACK', True):
         feedback_form = AnonymousFeedbackForm()
-
     return {'feedback_form': feedback_form}
-

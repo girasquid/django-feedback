@@ -14,10 +14,10 @@
             <ul class='actionlist'>
                 {% get_feedback %}
                 {% for feedback in feedback %}
-                    <li><a href="{{ feedback.get_absolute_url }}">{{ feedback.get_type_display }} from {{ feedback.user.username|title }}</a> &mdash; {{ feedback.time|timesince }} ago</li>
+                    <li><a href="{{ feedback.get_absolute_url }}">{{ feedback.get_type_display }} from {% firstof feedback.user.username "anon" %}</a> &mdash; {{ feedback.time|timesince }} ago</li>
                 {% endfor %}
             </ul>
-            <p><a href='{% url admin:feedback_feedback_changelist %}'>View all feedback</a></p>
+            <p><a href="{% url 'admin:feedback_feedback_changelist' %}">View all feedback</a></p>
         </div>
     </div>
 {% endblock %}

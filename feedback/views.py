@@ -5,7 +5,7 @@ from django.template import RequestContext
 from feedback.forms import AnonymousFeedbackForm, FeedbackForm
 
 
-def leave_feedback(request, template_name='feedback.html'):
+def leave_feedback(request, template_name='feedback/feedback_form.html'):
     if request.user.is_authenticated():
         form = FeedbackForm(request.POST or None)
     else:

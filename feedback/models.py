@@ -18,14 +18,17 @@ class BaseFeedback(models.Model):
     def __unicode__(self):
         return self.message
 
-    def get_absolute_url(self):
-        return reverse('admin:view-feedback', args=[self.id])
-
 
 class Feedback(BaseFeedback):
     user = models.ForeignKey(User, verbose_name=_('User'))
+
+    def get_absolute_url(self):
+        return reverse('admin:view-feedback', args=[self.id])
 
 
 class AnonymousFeedback(BaseFeedback):
     user = models.ForeignKey(User, verbose_name=_('User'), null=True,
                              blank=True, default=None)
+
+    def get_absolute_url(self):
+        return reverse('admin:view-anon-feedback', args=[self.id])

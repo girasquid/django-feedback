@@ -13,7 +13,7 @@ in your settings file. For example::
 
 	FEEDBACK_CHOICES = (
 		('bug', 'Bug'),
-		('feature_request', 'Feature Request)
+		('feature_request', 'Feature Request')
 	)
 	
 Also, be sure to include ``feedback.urls`` somewhere in your urls.py file.

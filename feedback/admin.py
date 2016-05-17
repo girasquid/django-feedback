@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.contrib import admin
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
@@ -19,11 +19,11 @@ class FeedbackAdmin(admin.ModelAdmin):
 
     def get_urls(self):
         urls = super(FeedbackAdmin, self).get_urls()
-        my_urls = patterns('',
+        my_urls = [
             url(r'^view/(?P<feedback_id>\d+)/$',
                 self.admin_site.admin_view(self.view_feedback),
                 name='view-feedback'),
-        )
+        ]
         return my_urls + urls
 
     def view_feedback(self, request, feedback_id):
@@ -45,11 +45,11 @@ class AnonymousFeedbackAdmin(admin.ModelAdmin):
 
     def get_urls(self):
         urls = super(AnonymousFeedbackAdmin, self).get_urls()
-        my_urls = patterns('',
+        my_urls = [
             url(r'^view/(?P<feedback_id>\d+)/$',
                 self.admin_site.admin_view(self.view_feedback),
                 name='view-anon-feedback'),
-        )
+        ]
         return my_urls + urls
 
     def view_feedback(self, request, feedback_id):

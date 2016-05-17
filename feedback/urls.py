@@ -1,7 +1,7 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from feedback.views import leave_feedback
 
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^$', leave_feedback, name='feedback'),
-)
+]
